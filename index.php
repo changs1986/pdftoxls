@@ -3,6 +3,8 @@ define('BASE_PATH', __DIR__);
 
 if (!empty($_POST['data'])){
     processData($_POST['data']);
+}else{
+    die('要输入东西啊！');
 }
 
 function processData($data)

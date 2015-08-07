@@ -1,9 +1,21 @@
 <!DOCTYPE HTML>
 <html>
+<head>
+<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+<script type="text/javascript">
+function triggerPost()
+{
+    document.getElementsByTagName('form')[0].submit();
+}
+</script>
+</head>
 <body>
 <form action="/index.php" method="post">
 <textarea name="data" cols="150" rows="10"></textarea><br/>
-<input type="submit" name="submit" />
+<paper-button raised>
+    <font onclick="javascript:triggerPost();">按我提交</font>
+</paper-button>
 </form>
 </body>
 </html>
