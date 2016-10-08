@@ -9,7 +9,9 @@ if (!empty($_POST['data'])){
 
 function processData($data)
 {
-    $data = preg_replace('/\s(\d{1,3})\s/','\r\n${1} ', $data);
+    $data = preg_replace('/\r\n(\w*)\r\n/', '${1} ', $data);
+    $data = preg_replace('/\s(\d{1,3})\s/', '\r\n${1} ', $data);
+
     $data = array_filter(explode('\r\n', $data));
     $result = array();
     foreach($data as $v)
@@ -21,7 +23,7 @@ function processData($data)
 
 function exportExcel($data, $sheetName)
 {
-    header("Content-type:application/vnd.ms-excel");   
+    header("Content-type:application/vnd.ms-excel");
     header("Content-Disposition:filename={$sheetName}.xls");
     if (!empty($data))
     {
@@ -37,7 +39,7 @@ function exportExcel($data, $sheetName)
            echo $str . "</tr>";
        }
        echo '</table>';
-    }    
+    }
 }
 
 
